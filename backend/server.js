@@ -202,6 +202,7 @@ app.post("/upload-image", upload.single("image"), async (req, res) => {
 
 		stream.end(req.file.buffer);
 	} catch (error) {
+		console.log("Error while uploading");
 		res.status(500).json({ error: "Oops! there is some error" });
 	}
 });
