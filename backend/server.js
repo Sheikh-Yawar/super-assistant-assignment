@@ -16,10 +16,9 @@ const User = require("./schemas/user");
 const QuestionsDataModel = require("./schemas/build");
 
 const app = express();
-
 app.use(
 	cors({
-		origin: "https://formbuilderapi.onrender.com",
+		origin: "https://animated-halva-53cf2f.netlify.app",
 		credentials: true,
 	})
 );
