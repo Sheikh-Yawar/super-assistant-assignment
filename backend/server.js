@@ -3,6 +3,7 @@ const passport = require("passport");
 const bcrypt = require("bcryptjs");
 const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
+const path = require("path");
 const cors = require("cors");
 const multer = require("multer");
 const { Storage } = require("@google-cloud/storage");
@@ -29,12 +30,9 @@ mongoose
 	.connect(keys.mongoURI)
 	.then((value) => console.log("Connection has been Established"));
 
-const path = require("path");
-const keyPath = path.resolve(__dirname, "credentials.json");
-
 const storage = new Storage({
 	projectId: process.env.PROJECTID,
-	keyFilename: keyPath,
+	keyFilename: process.env.KEYPATH,
 });
 
 const bucketName = "formbuilderimages";
