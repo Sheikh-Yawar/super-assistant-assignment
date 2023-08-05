@@ -12,9 +12,8 @@ import "./PreviewApp.css";
 
 function PreviewApp({ data, headerData }) {
 	const [isLoading, setIsLoading] = useState(false);
-
 	useEffect(() => {
-		if (data.length === 1) {
+		if (data.length === 0) {
 			setIsLoading(true);
 		} else {
 			setIsLoading(false);
