@@ -3,7 +3,8 @@ function PreviewHeader({ data }) {
 		<div
 			className="previewHeader"
 			style={{
-				backgroundImage: data && data[0].image ? `url(${data.image})` : "none",
+				backgroundImage:
+					data.length > 0 && data[0].image ? `url(${data.image})` : "none",
 				backgroundRepeat: "no-repeat",
 				backgroundPosition: "center",
 				backgroundSize: "cover",
