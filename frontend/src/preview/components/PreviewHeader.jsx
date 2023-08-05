@@ -3,13 +3,13 @@ function PreviewHeader({ data }) {
 		<div
 			className="previewHeader"
 			style={{
-				backgroundImage: data && data.image ? `url(${data.image})` : "none",
+				backgroundImage: data && data[0].image ? `url(${data.image})` : "none",
 				backgroundRepeat: "no-repeat",
 				backgroundPosition: "center",
 				backgroundSize: "cover",
 			}}
 		>
-			{data ? data.formName : "Untitled Form"}
+			{data.length > 0 ? data[0].formName : "Untitled Form"}
 		</div>
 	);
 }

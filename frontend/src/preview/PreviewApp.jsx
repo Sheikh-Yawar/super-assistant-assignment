@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 import "./PreviewApp.css";
 
-function PreviewApp({ data }) {
+function PreviewApp({ data, headerData }) {
 	const [isLoading, setIsLoading] = useState(false);
 
 	useEffect(() => {
@@ -71,7 +71,7 @@ function PreviewApp({ data }) {
 
 	return (
 		<div>
-			<PreviewHeader data={data[0]} />
+			<PreviewHeader data={headerData} />
 			{isLoading ? (
 				<div
 					style={{

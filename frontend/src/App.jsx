@@ -324,7 +324,7 @@ function App() {
 			<Route
 				path="/preview"
 				exact
-				element={<PreviewApp data={questionsData} />}
+				element={<PreviewApp data={questionsData} headerData={headerData} />}
 			/>
 		</Routes>
 	);
