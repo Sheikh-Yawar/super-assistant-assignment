@@ -1,0 +1,24 @@
+.questionBoxContainer{
+    padding: 1.5rem;
+    margin-top: 2rem;
+    box-shadow: 3px 3px 5px .5px grey;
+    width: 45vw;
+}
+
+.PreviewQuestionBoxoptions{ 
+    margin: 1rem 0rem 0rem 2.8rem;
+    display: flex;
+    gap: 1.5rem;
+    flex-direction: column;
+    font-size: 1.8rem;
+}
+
+.PreviewQuestionBoxoptions > .option{
+    cursor: pointer;
+    display: flex;
+    gap: 1rem;
+}
+
+.radio-button {
+    transform: scale(1.5);
+  }

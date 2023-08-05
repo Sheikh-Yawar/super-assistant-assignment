@@ -1,0 +1,26 @@
+.comprehensionQuestionText{
+    display: flex; 
+    gap:4rem;
+}
+
+.comprehensionQuestionText textarea{
+    font-size: 2rem;
+    width: 40vw;
+    height: 20vh;
+    resize: vertical;
+}
+
+.comprehensionQuestionText textarea::placeholder{
+    font-size: 1.5rem;
+}
+
+
+.addQuestion{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1.5rem;
+    font-size: 3rem;
+    cursor: pointer;
+}
+

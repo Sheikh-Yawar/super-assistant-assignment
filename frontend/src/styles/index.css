@@ -1,0 +1,205 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap");
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol,
+ul {
+	list-style: none;
+}
+blockquote,
+q {
+	quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+	content: "";
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+html {
+	font-size: 62.5%;
+	font-family: "Open Sans", sans-serif;
+	
+}
+
+body {
+	background-color: #0A122A;
+	margin: 1rem 2rem;
+}
+
+.QuestionContainer{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 3rem;
+    border-left: 1.5rem solid #ffba68;
+    background-color: #E7DECD;
+    padding:2rem 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.saveAndDelete{
+    display: flex;
+    align-items: end;
+    justify-content: center;
+    gap:2rem;
+}
+
+.saveQuestion{
+    font-size: 1.5rem;
+    background-color: #0A1224;
+    padding: 1.5rem 3rem;
+    border-radius: 1rem;
+    cursor: pointer;
+    color: #E7DECD;
+    text-align: center;
+}
+
+.deleteQuestion{
+    align-self: center;
+    font-size: 3.5rem;
+    cursor: pointer;
+
+}
+
+.deleteQuestion:hover, .deleteIcon:hover{
+    color: red;
+}
+
+.deleteIcon{
+  font-size: 2rem; 
+  cursor: pointer; 
+  margin-right: 1rem;
+}
+
+.authenticateContainer{
+    display: flex;
+    width: 90vw;
+    height: 90vh;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.authenticateBox{
+    background-color: #E7DECD;
+    padding: 5rem 8rem;
+    box-shadow: grey 0px 4px 12px;
+    border-radius: 1rem;
+}
+
+
+

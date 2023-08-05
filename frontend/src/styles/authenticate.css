@@ -1,0 +1,17 @@
+
+
+.fields{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.fields > input {
+    border: none;
+    font-size: 2rem;
+    padding: 1rem;
+   text-align: center;
+   outline:none;
+   border-radius: 1rem;
+}
+

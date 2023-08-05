@@ -1,0 +1,39 @@
+/* styles.css */
+
+.form-container {
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #e7decd;
+    margin: 2rem 0rem;
+  }
+  
+  .form-message {
+    color: #0a122a;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .form-select {
+    border: none;
+    outline: none;
+    font-size: 2rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .add-question-button-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+  }
+  
+  .add-question-button {
+    background-color: #ffba68;
+    padding: 15px;
+    border-radius: 25px;
+    cursor: pointer;
+  }
+  

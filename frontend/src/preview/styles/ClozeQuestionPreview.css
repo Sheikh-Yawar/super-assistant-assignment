@@ -1,0 +1,15 @@
+
+.options{
+    display:flex;
+    flex-direction: row;
+    margin: 2rem;
+    font-size: 2rem;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.options > .option {
+    padding: 1rem;
+    border: 1px solid black;
+    cursor: pointer;
+}

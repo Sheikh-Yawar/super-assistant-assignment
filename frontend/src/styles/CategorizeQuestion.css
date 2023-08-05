@@ -1,0 +1,73 @@
+
+.CategorizeQuestiontextAndImage{
+    display: flex;
+    align-items: center;
+    gap:5rem;
+
+}
+
+.CategorizeQuestiontext{
+    border: none;
+    font-size: 2.5rem;
+    padding: 1rem;
+    outline: none;
+    width: 50vw;
+    max-width: 100%;
+    resize: vertical;
+    height: auto;
+    font-size: 16px;
+    overflow: auto;
+}
+
+.CategorizeQuestionImage{
+    font-size: 2.5rem;
+    cursor: pointer;
+}
+
+.CategoriesContainer{
+    margin-top: 1.5rem;
+    height: fit-content;
+}
+
+.categories{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap:1rem;
+}
+.categoryInput{
+    border: none;
+    font-size: 1.5rem;
+    padding: .5rem;
+    outline: none;
+}
+
+.itemsAndBelongstoContianer{
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+}
+
+
+.itemsAndBelongstoContainerHeading, .itemsAndBelongsto{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.CategorizeQuestionDropdown{
+    border: none;
+    outline: none;
+    font-size: 1.5rem;
+    padding: .5rem 1rem;
+}
+.CategorizeQuestionDropdown option {
+   padding: 1rem;
+  }
+
+.CategorizeQuestionHeadings{
+    font-size: 1.5rem;
+	margin-bottom: 1rem;							
+}
+

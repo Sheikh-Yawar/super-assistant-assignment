@@ -1,0 +1,39 @@
+
+.categoriseQuestionPreview > .options{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin: 2rem 0rem;
+    font-size: 1.5rem;
+}
+
+.categoriseQuestionPreview .option {
+    cursor: move;
+    padding: 1rem;
+    border: 1px solid black;
+    margin: .5rem;
+}
+
+.categoriseQuestionPreview > .categories {
+    display: flex;
+    flex-direction: row;
+    gap: 4rem;
+    align-items: center;
+    font-size: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.categoriseQuestionPreview > .categories  .category{
+border:  1px solid black;
+width: 150px;
+padding: 1rem 3rem;
+}
+.categoriseQuestionPreview > .categories  .box{
+    border: 1px solid black;
+    width: 150px;
+   min-height: 10rem;
+   max-height: max-content;
+}
