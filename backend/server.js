@@ -18,7 +18,7 @@ const QuestionsDataModel = require("./schemas/build");
 const app = express();
 app.use(
 	cors({
-		origin: "https://formbuilder1234.netlify.app/",
+		origin: "https://formbuilder1234.netlify.app",
 		credentials: true,
 	})
 );
