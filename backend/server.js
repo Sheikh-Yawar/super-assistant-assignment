@@ -215,6 +215,7 @@ app.get(
 	passport.authenticate("jwt", { session: false }),
 	async (req, res) => {
 		try {
+			console.log("Fetch Request");
 			const username = req.user.username;
 			const password = req.user.password;
 
@@ -222,6 +223,8 @@ app.get(
 				username,
 				password,
 			});
+
+			console.log(questionsData);
 
 			if (!questionsData) {
 				return res.status(404).json({ message: "No saved data found" });
@@ -236,6 +239,7 @@ app.get(
 				data: questionsData.data,
 				headerData: headerData,
 			});
+			console.log("Done");
 		} catch (err) {
 			res.status(500).json({ error: "Failed to fetch array data" });
 		}
