@@ -53,6 +53,7 @@ function App() {
 
 				const responseData = await response.json();
 				console.log("From fetch", responseData);
+
 				setQuestionsData(responseData.data);
 				setHeaderData(responseData.headerData);
 			} catch (error) {
