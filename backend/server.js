@@ -18,7 +18,7 @@ const QuestionsDataModel = require("./schemas/build");
 const app = express();
 app.use(
 	cors({
-		origin: "https://animated-halva-53cf2f.netlify.app",
+		origin: "https://formbuilder1234.netlify.app/",
 		credentials: true,
 	})
 );
@@ -33,8 +33,6 @@ const storage = new Storage({
 	projectId: "project-1-390514",
 	keyFilename: process.env.KEYPATH,
 });
-
-console.log(process.env.KEYPATH);
 
 const bucketName = "formbuilderimages";
 
