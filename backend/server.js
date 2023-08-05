@@ -172,6 +172,8 @@ app.post("/upload-image", upload.single("image"), async (req, res) => {
 			return res.status(400).json({ error: "No image file found" });
 		}
 
+		console.log(req.file);
+
 		const dataObjectId = req.body.id;
 		const blobName = dataObjectId + "_image";
 		const bucket = storage.bucket(bucketName);
@@ -189,7 +191,10 @@ app.post("/upload-image", upload.single("image"), async (req, res) => {
 			return res.status(500).json({ error: "Error during image upload" });
 		});
 
+		console.log("Upload Started");
+
 		stream.on("finish", () => {
+			console.log("Upload Ended");
 			res.status(200).json({
 				imageURL: getPublicUrl(bucketName, blobName),
 			});
