@@ -29,13 +29,16 @@ function App() {
 		async function fetchData() {
 			setIsLoading(true);
 			try {
-				const response = await fetch("http://localhost:3000/fetch", {
-					method: "GET",
-					headers: {
-						"Content-Type": "application/json",
-						Authorization: `Bearer ${Cookies.get("token")}`,
-					},
-				});
+				const response = await fetch(
+					"https://formbuilderapi.onrender.com/fetch",
+					{
+						method: "GET",
+						headers: {
+							"Content-Type": "application/json",
+							Authorization: `Bearer ${Cookies.get("token")}`,
+						},
+					}
+				);
 
 				if (response.status === 401) {
 					throw new Error("You need to sign-in again");
@@ -78,10 +81,13 @@ function App() {
 		const formData = new FormData();
 		formData.append("image", imageFile);
 		formData.append("id", id);
-		const response = await fetch("http://localhost:3000/upload-image", {
-			method: "POST",
-			body: formData,
-		});
+		const response = await fetch(
+			"https://formbuilderapi.onrender.com/upload-image",
+			{
+				method: "POST",
+				body: formData,
+			}
+		);
 
 		if (!response.ok) {
 			throw new Error("Image upload failed");
@@ -94,7 +100,7 @@ function App() {
 
 	const request = async (dataObj) => {
 		try {
-			const response = await fetch("http://localhost:3000/save", {
+			const response = await fetch("https://formbuilderapi.onrender.com/save", {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
@@ -170,12 +176,15 @@ function App() {
 				autoClose: 100000,
 			});
 			try {
-				const response = await fetch(`http://localhost:3000/delete/${index}`, {
-					method: "DELETE",
-					headers: {
-						Authorization: `Bearer ${Cookies.get("token")}`,
-					},
-				});
+				const response = await fetch(
+					`https://formbuilderapi.onrender.com/delete/${index}`,
+					{
+						method: "DELETE",
+						headers: {
+							Authorization: `Bearer ${Cookies.get("token")}`,
+						},
+					}
+				);
 
 				if (response.status === 401) {
 					throw new Error("You need to sign-in again");
