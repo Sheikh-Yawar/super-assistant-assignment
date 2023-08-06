@@ -310,9 +310,9 @@ app.delete(
 
 			dataArr.splice(deleteIndex, 1);
 
-			dataArr.forEach((item, index) => {
-				item.id = index.toString();
-			});
+			for (let i = 1; i <= dataArr.length; i++) {
+				item.id = i;
+			}
 
 			await existingData.save();
 
