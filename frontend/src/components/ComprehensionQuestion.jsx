@@ -120,7 +120,7 @@ function ComprehensionQuestion({
 							fontWeight: "bold",
 						}}
 					>
-						Question {index}
+						Question {parseInt(index) + 1}
 					</div>
 					<div className="comprehensionQuestionText">
 						<textarea
@@ -154,7 +154,7 @@ function ComprehensionQuestion({
 					{questionCards.map((value, idx) => (
 						<React.Fragment key={idx}>
 							<QuestionBox
-								index={`${index}.${idx + 1}`}
+								index={`${parseInt(index) + 1}.${idx + 1}`}
 								saveComprehensionQuestionData={saveQuestionData}
 								questionData={questions[idx]}
 							/>

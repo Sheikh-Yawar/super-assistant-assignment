@@ -30,16 +30,13 @@ function Authenticate({ action }) {
 		try {
 			setIsLoading(true);
 			const updatedAction = action.toLowerCase();
-			const response = await fetch(
-				`https://formbuilderapi.onrender.com/${updatedAction}`,
-				{
-					method: "POST",
-					headers: {
-						"Content-Type": "application/json",
-					},
-					body: JSON.stringify({ username: username, password: password }),
-				}
-			);
+			const response = await fetch(`http://localhost:3000/${updatedAction}`, {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify({ username: username, password: password }),
+			});
 			const data = await response.json();
 
 			if (response.status === 409) {

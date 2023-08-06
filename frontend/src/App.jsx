@@ -29,16 +29,13 @@ function App() {
 		async function fetchData() {
 			setIsLoading(true);
 			try {
-				const response = await fetch(
-					"https://formbuilderapi.onrender.com/fetch",
-					{
-						method: "GET",
-						headers: {
-							"Content-Type": "application/json",
-							Authorization: `Bearer ${Cookies.get("token")}`,
-						},
-					}
-				);
+				const response = await fetch("http://localhost:3000/fetch", {
+					method: "GET",
+					headers: {
+						"Content-Type": "application/json",
+						Authorization: `Bearer ${Cookies.get("token")}`,
+					},
+				});
 
 				if (response.status === 401) {
 					throw new Error("You need to sign-in again");
@@ -81,13 +78,10 @@ function App() {
 		const formData = new FormData();
 		formData.append("image", imageFile);
 		formData.append("id", id);
-		const response = await fetch(
-			"https://formbuilderapi.onrender.com/upload-image",
-			{
-				method: "POST",
-				body: formData,
-			}
-		);
+		const response = await fetch("http://localhost:3000/upload-image", {
+			method: "POST",
+			body: formData,
+		});
 
 		if (!response.ok) {
 			throw new Error("Image upload failed");
@@ -100,7 +94,7 @@ function App() {
 
 	const request = async (dataObj) => {
 		try {
-			const response = await fetch("https://formbuilderapi.onrender.com/save", {
+			const response = await fetch("http://localhost:3000/save", {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
@@ -116,6 +110,8 @@ function App() {
 			}
 			const responseData = await response.json();
 			console.log(responseData);
+			setQuestionsData(responseData.data);
+			setHeaderData(responseData.headerData);
 		} catch (error) {
 			toast.dismiss();
 			toast.error(error.message, {
@@ -132,9 +128,10 @@ function App() {
 	};
 
 	const addQuestion = () => {
+		console.log(questionsData.length);
 		setQuestionsData([
 			...questionsData,
-			{ type: questionType, id: questionsData.length },
+			{ type: questionType, id: questionsData.length, filled: false },
 		]);
 	};
 
@@ -151,7 +148,7 @@ function App() {
 		}
 
 		setIsSaving(false);
-		request(dataObj);
+		request({ ...dataObj, filled: true });
 
 		toast.dismiss();
 		toast.success("Saved", {
@@ -161,46 +158,52 @@ function App() {
 	};
 
 	const deleteQuestion = async (index) => {
-		toast.loading("Deleting", {
-			position: "top-right",
-			autoClose: 100000,
-		});
-		try {
-			const response = await fetch(
-				`https://formbuilderapi.onrender.com/delete/${index}`,
-				{
+		console.log(questionsData);
+		if (!questionsData[index].filled) {
+			console.log("Not Filled");
+			const updateQuestionsData = [...questionsData];
+			updateQuestionsData.splice(index, 1);
+			setQuestionsData(updateQuestionsData);
+		} else {
+			toast.loading("Deleting", {
+				position: "top-right",
+				autoClose: 100000,
+			});
+			try {
+				const response = await fetch(`http://localhost:3000/delete/${index}`, {
 					method: "DELETE",
 					headers: {
-						"Content-Type": "application/json",
 						Authorization: `Bearer ${Cookies.get("token")}`,
 					},
+				});
+
+				if (response.status === 401) {
+					throw new Error("You need to sign-in again");
 				}
-			);
 
-			if (response.status === 401) {
-				throw new Error("You need to sign-in again");
-			}
+				if (!response.ok) {
+					throw new Error("Request failed");
+				}
 
-			if (!response.ok) {
-				throw new Error("Request failed");
-			}
-
-			const responseData = await response.json();
-			setQuestionsData(responseData.data);
-			toast.dismiss();
-			toast.error("Deleted", {
-				position: "top-right",
-				autoClose: 2000,
-			});
-		} catch (error) {
-			toast.error(error.message, {
-				position: "top-right",
-				autoClose: 2000,
-			});
-			if (error.message === "You need to sign-in again") {
-				setTimeout(() => {
-					navigate("/", { replace: true });
-				}, 2000);
+				const responseData = await response.json();
+				console.log("Delete", responseData.data);
+				setQuestionsData(responseData.data);
+				toast.dismiss();
+				toast.error("Deleted", {
+					position: "top-right",
+					autoClose: 2000,
+				});
+			} catch (error) {
+				toast.dismiss();
+				toast.error(error.message, {
+					position: "top-right",
+					autoClose: 2000,
+				});
+				if (error.message === "You need to sign-in again") {
+					setTimeout(() => {
+						navigate("/", { replace: true });
+					}, 2000);
+				}
 			}
 		}
 	};
@@ -231,7 +234,7 @@ function App() {
 							"imageInputCategorizeQuestion" + new Date().getTime()
 						}
 						data={questionData}
-						index={parseInt(index) + 1}
+						index={index}
 						deleteQuestion={deleteQuestion}
 						saveData={getData}
 					/>
@@ -241,7 +244,7 @@ function App() {
 				questionComponent = (
 					<ClozeQuestion
 						data={questionData}
-						index={parseInt(index) + 1}
+						index={index}
 						deleteQuestion={deleteQuestion}
 						saveData={getData}
 					/>
@@ -254,19 +257,15 @@ function App() {
 							"imageInputCategorizeQuestion" + new Date().getTime()
 						}
 						data={questionData}
-						index={parseInt(index) + 1}
+						index={index}
 						deleteQuestion={deleteQuestion}
 						saveData={getData}
 					/>
 				);
 				break;
 		}
-		return <div key={parseInt(index) + 1}>{questionComponent}</div>;
+		return <div key={index}>{questionComponent}</div>;
 	});
-
-	const showData = () => {
-		console.log(questionsData);
-	};
 
 	return (
 		<Routes>
@@ -312,9 +311,6 @@ function App() {
 								<div className="add-question-button-container">
 									<button className="add-question-button" onClick={addQuestion}>
 										Add Question
-									</button>
-									<button className="add-question-button" onClick={showData}>
-										Show Question
 									</button>
 								</div>
 							</>

@@ -64,10 +64,10 @@ const envContent = {
 
 const storage = new Storage({
 	projectId: "project-1-390514",
-	keyFilename: createFileWithContent(envContent),
+	// keyFilename: createFileWithContent(envContent),
 });
 
-console.log(createFileWithContent(envContent));
+// console.log(createFileWithContent(envContent));
 
 const bucketName = "formbuilderimages";
 
@@ -141,7 +141,7 @@ app.post(
 			const username = req.user.username;
 			const password = req.user.password;
 
-			const existingData = await QuestionsDataModel.findOne({
+			let existingData = await QuestionsDataModel.findOne({
 				username,
 				password,
 			});
@@ -153,7 +153,11 @@ app.post(
 				if (objectType === "formName") {
 					existingData.headerData = req.body;
 					await existingData.save();
-					res.status(200).json({ message: "Data Updated successfully" });
+					res.status(200).json({
+						message: "Data Updated successfully",
+						headerData: existingData.headerData,
+						data: existingData.data,
+					});
 					return;
 				}
 
@@ -166,27 +170,40 @@ app.post(
 				} else {
 					dataArr.push(req.body);
 				}
+
 				await existingData.save();
 				console.log("Data saved successfully");
+				res
+					.status(200)
+					.json({
+						message: "Data Updated successfully",
+						headerData: existingData.headerData,
+						data: dataArr,
+					});
 			} else {
 				let newData;
 				if (req.body.type === "formName") {
 					newData = new QuestionsDataModel({
-						username: username,
-						password: password,
+						username,
+						password,
 						headerData: req.body,
 					});
 				} else {
 					newData = new QuestionsDataModel({
-						username: username,
-						password: password,
+						username,
+						password,
 						data: [req.body],
 					});
 				}
 
 				await newData.save();
 				console.log("Data saved successfully");
-				res.status(200).json({ message: "Data saved successfully" });
+
+				res.status(200).json({
+					message: "Data saved successfully",
+					headerData: newData.headerData,
+					data: newData.data,
+				});
 			}
 		} catch (err) {
 			res.status(500).json({ error: "Failed to save objects" });
@@ -286,7 +303,7 @@ app.delete(
 			const password = req.user.password;
 			const deleteId = req.params.id;
 
-			console.log(deleteId);
+			console.log(id);
 
 			const existingData = await QuestionsDataModel.findOne({
 				username,
@@ -310,9 +327,11 @@ app.delete(
 
 			dataArr.splice(deleteIndex, 1);
 
-			for (let i = 1; i <= dataArr.length; i++) {
-				item.id = i;
+			for (let i = 0; i < dataArr.length; i++) {
+				dataArr[i].id = i;
 			}
+
+			console.log(dataArr);
 
 			await existingData.save();
 

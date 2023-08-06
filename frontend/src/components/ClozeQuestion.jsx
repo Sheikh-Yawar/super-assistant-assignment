@@ -107,7 +107,7 @@ function ClozeQuestion({ index, deleteQuestion, saveData, data }) {
 						fontWeight: "bold",
 					}}
 				>
-					Question {index}
+					Question {parseInt(index) + 1}
 				</div>
 				<div className="clozeQuestionInput">
 					<label htmlFor="ClozeQuestionsentence" style={{ fontSize: "1.5rem" }}>

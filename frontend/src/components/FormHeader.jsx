@@ -17,7 +17,7 @@ function FormHeader({ saveData, data }) {
 		deleteImage,
 	} = useImageUpload(data.length > 0 ? data[0] : null);
 	const [formName, setformName] = useState(
-		data.length > 0 ? data[0].formName : "Untitled Form"
+		data.length > 0 ? data[0].formName : ""
 	);
 
 	const updateFormName = (e) => {

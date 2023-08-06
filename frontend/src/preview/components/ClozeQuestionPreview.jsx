@@ -37,7 +37,7 @@ function ClozeQuestionPreview({ data }) {
 	return (
 		<div className="previewContainer">
 			<div>
-				<div className="questionNumber">Question {data.id}</div>
+				<div className="questionNumber">Question {parseInt(data.id) + 1}</div>
 				<div className="question">
 					<span>
 						<GoDotFill />

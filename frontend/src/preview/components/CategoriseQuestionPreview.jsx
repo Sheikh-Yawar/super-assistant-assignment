@@ -13,7 +13,6 @@ function CatagorizeQuestionPreview({ data, saveData }) {
 	);
 
 	const handleDrop = (optionIndex, categoryIndex) => {
-		console.log(optionIndex);
 		const updatedOptions = [...options];
 		const option = updatedOptions.splice(optionIndex, 1)[0];
 		const updatedCategoryOptions = [...categoryOptions];
@@ -60,7 +59,7 @@ function CatagorizeQuestionPreview({ data, saveData }) {
 	return (
 		<div className="previewContainer">
 			<div className="categoriseQuestionPreview">
-				<div className="questionNumber">Question {data.id}</div>
+				<div className="questionNumber">Question {parseInt(data.id) + 1}</div>
 				<div className="question">
 					<span>
 						<GoDotFill />

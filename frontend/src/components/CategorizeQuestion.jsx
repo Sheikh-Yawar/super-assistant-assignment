@@ -130,7 +130,7 @@ function CatagorizeQuestion({
 						fontWeight: "bold",
 					}}
 				>
-					Question {index}
+					Question {parseInt(index) + 1}
 				</div>
 				<div className="CategorizeQuestiontextAndImage">
 					<textarea
