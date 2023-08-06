@@ -1,0 +1,34 @@
+.submitContainer{
+    display: flex;
+    width: 90vw;
+    height: 90vh;
+    align-items: center;
+    justify-content: center;
+}
+
+.submitBox{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: #E7DECD;
+    padding: 5rem 8rem;
+    box-shadow: grey 0px 4px 12px;
+    border-radius: 1rem;
+    gap: 2rem;
+}
+
+.submitBox > div{
+    font-size: 4rem;
+}
+
+.submitBox > button{
+    font-size: 1.5rem;
+    background-color: #0A1224;
+    padding: 1.5rem 3rem;
+    border-radius: 1rem;
+    cursor: pointer;
+    color: #E7DECD;
+    text-align: center;
+}

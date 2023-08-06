@@ -75,6 +75,7 @@ function FormHeader({ saveData, data }) {
 
 						<input
 							type="file"
+							accept="image/*"
 							id="imageInputFormHeader"
 							style={{ display: "none" }}
 							onChange={handleImageChange}

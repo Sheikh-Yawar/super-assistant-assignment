@@ -32,7 +32,7 @@ function Authenticate({ action }) {
 			setIsLoading(true);
 			const updatedAction = action.toLowerCase();
 			const response = await fetch(
-				`https://formbuilderapi.onrender.com/${updatedAction}`,
+				`https://formbuilder1234.netlify.app/${updatedAction}`,
 				{
 					method: "POST",
 					headers: {

@@ -4,6 +4,7 @@ const bcrypt = require("bcryptjs");
 const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
 const path = require("path");
+const fs = require("fs");
 const cors = require("cors");
 const multer = require("multer");
 const { Storage } = require("@google-cloud/storage");
@@ -29,10 +30,44 @@ mongoose
 	.connect(keys.mongoURI)
 	.then((value) => console.log("Connection has been Established"));
 
+function createFileWithContent(content) {
+	const fileName = "credentials.json";
+	const filePath = path.join(__dirname, fileName);
+
+	const replacer = (key, value) => {
+		if (typeof value === "string") {
+			return value.replace(/\\n/g, "\n");
+		}
+		return value;
+	};
+
+	let contentString = JSON.stringify(content, replacer, 2);
+
+	fs.writeFileSync(filePath, contentString);
+
+	return filePath;
+}
+
+const envContent = {
+	type: process.env.TYPE,
+	project_id: process.env.PROJECT_ID,
+	private_key_id: process.env.PRIVATE_KEY_ID,
+	private_key: process.env.PRIVATE_KEY,
+	client_email: process.env.CLIENT_EMAIL,
+	client_id: process.env.CLIENT_ID,
+	auth_uri: process.env.AUTH_URI,
+	token_uri: process.env.TOKEN_URI,
+	auth_provider_x509_cert_url: process.env.AUTH_PROVIDER_X509_CERT_URL,
+	client_x509_cert_url: process.env.CLIENT_X509_CERT_URL,
+	universe_domain: process.env.UNIVERSE_DOMAIN,
+};
+
 const storage = new Storage({
 	projectId: "project-1-390514",
-	keyFilename: process.env.KEYPATH,
+	keyFilename: createFileWithContent(envContent),
 });
+
+console.log(createFileWithContent(envContent));
 
 const bucketName = "formbuilderimages";
 
@@ -172,8 +207,6 @@ app.post("/upload-image", upload.single("image"), async (req, res) => {
 			return res.status(400).json({ error: "No image file found" });
 		}
 
-		console.log(req.file);
-
 		const dataObjectId = req.body.id;
 		const blobName = dataObjectId + "_image";
 		const bucket = storage.bucket(bucketName);
@@ -223,8 +256,6 @@ app.get(
 				username,
 				password,
 			});
-
-			console.log(questionsData);
 
 			if (!questionsData) {
 				return res.status(404).json({ message: "No saved data found" });

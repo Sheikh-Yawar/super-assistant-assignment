@@ -95,9 +95,11 @@ function CatagorizeQuestionPreview({ data, saveData }) {
 					))}
 				</div>
 			</div>
-			<div className="questionImage">
-				<img src={data && data.image ? data.image : ""} />
-			</div>
+			{data && data.image ? (
+				<div className="questionImage">
+					<img src={data && data.image ? data.image : ""} />
+				</div>
+			) : null}
 			<div className="saveAndReset">
 				<button
 					className="previewSave"

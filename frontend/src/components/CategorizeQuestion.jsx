@@ -156,6 +156,7 @@ function CatagorizeQuestion({
 
 								<input
 									type="file"
+									accept="image/*"
 									id={uniqueIdentifier}
 									style={{ display: "none" }}
 									onChange={handleImageChange}

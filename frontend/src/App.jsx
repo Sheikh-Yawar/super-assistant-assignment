@@ -13,6 +13,7 @@ import { toast } from "react-toastify";
 
 import "react-toastify/dist/ReactToastify.css";
 import "./styles/App.css";
+import Submit from "./components/Submit";
 
 function App() {
 	const [questionType, setQuestionType] = useState("CategorizeQuestion");
@@ -29,7 +30,7 @@ function App() {
 			setIsLoading(true);
 			try {
 				const response = await fetch(
-					"https://formbuilderapi.onrender.com/fetch",
+					"https://formbuilder1234.netlify.app/fetch",
 					{
 						method: "GET",
 						headers: {
@@ -81,7 +82,7 @@ function App() {
 		formData.append("image", imageFile);
 		formData.append("id", id);
 		const response = await fetch(
-			"https://formbuilderapi.onrender.com/upload-image",
+			"https://formbuilder1234.netlify.app/upload-image",
 			{
 				method: "POST",
 				body: formData,
@@ -99,7 +100,7 @@ function App() {
 
 	const request = async (dataObj) => {
 		try {
-			const response = await fetch("https://formbuilderapi.onrender.com/save", {
+			const response = await fetch("https://formbuilder1234.netlify.app/save", {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
@@ -166,7 +167,7 @@ function App() {
 		});
 		try {
 			const response = await fetch(
-				`https://formbuilderapi.onrender.com/delete/${index}`,
+				`https://formbuilder1234.netlify.app/delete/${index}`,
 				{
 					method: "DELETE",
 					headers: {
@@ -326,6 +327,7 @@ function App() {
 				exact
 				element={<PreviewApp data={questionsData} headerData={headerData} />}
 			/>
+			<Route path="/submit" exact element={<Submit />} />
 		</Routes>
 	);
 }

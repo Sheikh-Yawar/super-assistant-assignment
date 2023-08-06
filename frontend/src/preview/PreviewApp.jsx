@@ -35,6 +35,8 @@ function PreviewApp({ data, headerData }) {
 				navigate("/", { replace: true });
 			}, 2000);
 		}
+
+		navigate("/submit", { replace: true });
 	};
 
 	const questions = data.map((questionData, index) => {
