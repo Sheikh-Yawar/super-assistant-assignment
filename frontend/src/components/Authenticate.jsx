@@ -20,7 +20,6 @@ function Authenticate({ action }) {
 	};
 
 	const handleSubmit = async () => {
-		console.log(username, password);
 		if (username === "" || password === "") {
 			toast.error("Please fill all the details", {
 				position: "top-right",
@@ -32,7 +31,7 @@ function Authenticate({ action }) {
 			setIsLoading(true);
 			const updatedAction = action.toLowerCase();
 			const response = await fetch(
-				`https://formbuilder1234.netlify.app/${updatedAction}`,
+				`https://formbuilderapi.onrender.com/${updatedAction}`,
 				{
 					method: "POST",
 					headers: {

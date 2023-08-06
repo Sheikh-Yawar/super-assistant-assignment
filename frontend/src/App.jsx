@@ -30,7 +30,7 @@ function App() {
 			setIsLoading(true);
 			try {
 				const response = await fetch(
-					"https://formbuilder1234.netlify.app/fetch",
+					"https://formbuilderapi.onrender.com/fetch",
 					{
 						method: "GET",
 						headers: {
@@ -82,7 +82,7 @@ function App() {
 		formData.append("image", imageFile);
 		formData.append("id", id);
 		const response = await fetch(
-			"https://formbuilder1234.netlify.app/upload-image",
+			"https://formbuilderapi.onrender.com/upload-image",
 			{
 				method: "POST",
 				body: formData,
@@ -100,7 +100,7 @@ function App() {
 
 	const request = async (dataObj) => {
 		try {
-			const response = await fetch("https://formbuilder1234.netlify.app/save", {
+			const response = await fetch("https://formbuilderapi.onrender.com/save", {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
@@ -167,7 +167,7 @@ function App() {
 		});
 		try {
 			const response = await fetch(
-				`https://formbuilder1234.netlify.app/delete/${index}`,
+				`https://formbuilderapi.onrender.com/delete/${index}`,
 				{
 					method: "DELETE",
 					headers: {
